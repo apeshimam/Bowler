@@ -2,7 +2,7 @@ package org.bowlerframework.view.scalate
 
 import java.io.{StringWriter, PrintWriter}
 import org.bowlerframework.{GET, HTTP, Response, Request}
-import org.bowlerframework.view.squery.ViewComponentRegistry
+import org.bowlerframework.view.scuery.ViewComponentRegistry
 
 /**
  * A ViewRenderer that uses Scalate templates to render views
@@ -27,7 +27,7 @@ class ScalateViewRenderer extends BrowserViewRenderer {
 
     Layout.activeLayout(request) match{
       case None => response.getWriter.write(viewValue)
-      case Some(layout) => layout.render(request, response, viewValue)
+      case Some(layout) => layout.render(request, response, model, viewValue)
     }
 
     if (request.getMethod == GET)
